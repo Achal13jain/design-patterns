@@ -10,13 +10,13 @@
 
 <br/>
 
-[![Live Demo](https://img.shields.io/badge/live_demo-UI_Aesthetic_Atlas-ff3b00?style=for-the-badge&labelColor=0d0d0d)](https://achal13jain.github.io/ui-design-patterns/)
+[![Live Demo](https://img.shields.io/badge/live_demo-UI_Aesthetic_Atlas-ff3b00?style=for-the-badge&labelColor=0d0d0d)](https://achal13jain.github.io/design-patterns/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-ff3b00?style=for-the-badge&labelColor=0d0d0d)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-ff3b00?style=for-the-badge&labelColor=0d0d0d)](CONTRIBUTING.md)
 
 <br/>
 
-**[Browse the Interactive Gallery &rarr;](https://achal13jain.github.io/ui-design-patterns/)**
+**[Browse the Interactive Gallery &rarr;](https://achal13jain.github.io/design-patterns/)**
 
 *20 patterns &nbsp;&middot;&nbsp; HD video previews &nbsp;&middot;&nbsp; Vibe &times; Effort analysis &nbsp;&middot;&nbsp; Real-world examples*
 
@@ -67,7 +67,7 @@ This is a **visual decision-making tool** — a high-fidelity menu of the 20 dom
 
 > *\*Minimalism is low effort to implement and brutally hard to execute with taste.*
 
-**See every pattern in motion &rarr; [Open the Gallery](https://achal13jain.github.io/ui-design-patterns/)**
+**See every pattern in motion &rarr; [Open the Gallery](https://achal13jain.github.io/design-patterns/)**
 
 ---
 
@@ -106,11 +106,11 @@ This is a **visual decision-making tool** — a high-fidelity menu of the 20 dom
 > This gallery is simple to browse because it was complex to build.
 
 ```
-HTML/CSS Templates         Playwright Automation          Cloudinary CDN
+HTML/CSS Templates         Playwright Capture             FFmpeg Delivery
 ──────────────────    →    ─────────────────────    →    ─────────────────
-Zero-dependency            Headless Chromium              MP4 video, loops
-pure CSS @keyframes        960×640, 60fps                 inside gallery
-infinite loop              5-second captures              zero repo bloat
+Zero-dependency            Headless Chromium              Optimized H.264
+pure CSS @keyframes        960×640 previews               forward + reverse
+infinite loop              5-second captures              seamless 10s loop
 ```
 
 **How each preview was made:**
@@ -118,14 +118,18 @@ infinite loop              5-second captures              zero repo bloat
 1. **Template engineering** — 20 zero-dependency HTML/CSS files, each capturing the precise math of its pattern
 2. **Ghost interactions** — Pure CSS `@keyframes` simulate natural user behavior on infinite loops
 3. **Headless capture** — A Python/Playwright script spins up headless Chromium at 960&times;640, recording flawless loops
-4. **CDN hosting** — MP4 videos are served via Cloudinary CDN, keeping the repository lean while delivering HD previews
+4. **Ping-pong encoding** — `scripts/build-pingpong-videos.ps1` joins every capture with its reverse while removing duplicated endpoint frames
+5. **Static delivery** — The complete optimized preview set is approximately 5 MB and ships directly with GitHub Pages
 
 **Gallery features:**
 
 - Cinematic page-load sequence with character-by-character hero reveal
 - Staggered scroll animations with parallax video previews
 - Animated gradient borders on hover
-- Filter by effort level or use case
+- Search and filter by effort level or use case
+- Cinematic and compact overview modes
+- Side-by-side comparison for up to three patterns
+- Shareable filters, searches, views, and direct pattern links
 - Vibe &times; Effort decision matrix
 - `prefers-reduced-motion` respected throughout
 - Zero dependencies — single HTML file, pure CSS/JS
@@ -161,7 +165,7 @@ Read the full guide: [**CONTRIBUTING.md**](CONTRIBUTING.md)
 
 ## License
 
-MIT &copy; [Achal Jain](https://achal-jain-portfolio.netlify.app) &middot; Free to use, reference, and build on.
+MIT &copy; [Achal Jain](https://achal-jain.vercel.app/) &middot; Free to use, reference, and build on.
 
 ---
 
@@ -173,7 +177,7 @@ MIT &copy; [Achal Jain](https://achal-jain-portfolio.netlify.app) &middot; Free 
 
 <br/>
 
-*Built with obsession by [Achal Jain](https://achal-jain-portfolio.netlify.app)*
+*Built with obsession by [Achal Jain](https://achal-jain.vercel.app/)*
 
 <br/>
 

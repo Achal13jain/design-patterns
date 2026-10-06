@@ -45,7 +45,8 @@ New patterns are accepted **selectively**. Before building anything:
 - A zero-dependency HTML/CSS template that captures the pattern's core visual math
 - Pure CSS `@keyframes` on an `infinite` loop (ghost clicks, hover states, natural interactions)
 - A 5-second MP4 video captured at **960x640** using headless Chromium
-- Video uploaded to Cloudinary CDN — do not commit large binary files to the repo
+- A ping-pong preview generated with `scripts/build-pingpong-videos.ps1`
+- Only the optimized file in `videos/pingpong/` committed; keep raw captures out of Git
 - A PR with the new entry added to `index.html` (gallery + matrix table) and `README.md` (pattern table) in the correct numbered slot
 
 ---
@@ -57,7 +58,7 @@ When adding or editing a pattern entry in `index.html`, match this structure:
 ```html
 <article class="pattern-entry" data-effort="low|medium|high" data-tags="space-separated tags">
   <div class="pattern-preview">
-    <video src="[Cloudinary CDN URL]" autoplay muted loop playsinline preload="metadata"
+    <video src="videos/pingpong/XX-pattern-name.mp4" muted loop playsinline preload="metadata"
            aria-label="[Pattern Name] design pattern"></video>
   </div>
   <div class="pattern-info">
@@ -106,7 +107,7 @@ Before submitting a PR:
 
 - [ ] Matches the entry format above exactly
 - [ ] Editorial voice is sharp and opinionated, not neutral
-- [ ] No large binary files committed (videos go via Cloudinary CDN)
+- [ ] Only the optimized ping-pong preview is committed; raw captures remain ignored
 - [ ] For new patterns: issue was opened and approved first
 - [ ] PR title follows the convention: `feat(pattern): add Typographic UI` or `fix(description): sharpen Brutalism skip-if`
 
@@ -122,4 +123,4 @@ This project values taste, honesty, and craft. Contributions that add noise with
 
 ## Questions?
 
-Open a [Discussion](../../discussions). Or reach me directly at [achal-jain-portfolio.netlify.app](https://achal-jain-portfolio.netlify.app).
+Open a [Discussion](../../discussions). Or reach me directly at [Achal Jain's portfolio](https://achal-jain.vercel.app/).

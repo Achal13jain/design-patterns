@@ -17,7 +17,7 @@
 ## For New Patterns Only
 
 **Approved in issue:** #
-**CDN URL for preview MP4:**
+**Ping-pong preview path:** `videos/pingpong/`
 **Recorded at:** 960x640 · 5 seconds · headless Chromium
 
 ---
@@ -26,7 +26,7 @@
 
 - [ ] Follows the entry format in CONTRIBUTING.md exactly
 - [ ] Editorial voice matches: opinionated and decision-useful, not encyclopedic
-- [ ] No video or binary files committed (Cloudinary CDN URL used instead)
+- [ ] Only the optimized ping-pong preview is committed; raw captures remain ignored
 - [ ] For new patterns: issue was opened and approved first
 - [ ] PR title follows the convention:
   - `feat(pattern): add [Pattern Name]`
