@@ -1,6 +1,10 @@
-# Media assets (served via Cloudinary CDN, not committed)
+# Local source media remains ignored; optimized loop previews ship with the site
 assets/
-videos/
+videos/*
+!videos/pingpong/
+!videos/pingpong/*.mp4
+!videos/posters/
+!videos/posters/*.webp
 
 # Build artifacts
 cloudinary_urls.txt
@@ -11,3 +15,7 @@ upload_videos.py
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Local-only backups and alternate checkouts
+local-only/
+/ui-design-patterns1/

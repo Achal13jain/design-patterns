@@ -8,6 +8,11 @@
       name="description"
       content="A definitive visual gallery of 20 modern UI design patterns. Animated previews, vibe analysis, and effort ratings for founders, developers, and designers."
     />
+    <link
+      rel="canonical"
+      href="https://achal13jain.github.io/design-patterns/"
+    />
+    <meta name="theme-color" content="#080808" />
     <meta property="og:title" content="UI Aesthetic Atlas" />
     <meta
       property="og:description"
@@ -17,8 +22,25 @@
       property="og:image"
       content="https://res.cloudinary.com/du0ea6cth/image/upload/v1774081062/ui-aesthetic-atlas/01-neubrutalism.gif"
     />
+    <meta
+      property="og:url"
+      content="https://achal13jain.github.io/design-patterns/"
+    />
+    <meta property="og:site_name" content="UI Aesthetic Atlas" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="UI Aesthetic Atlas — 20 Modern Design Patterns"
+    />
+    <meta
+      name="twitter:description"
+      content="Explore 20 modern UI aesthetics with motion previews, use cases, and effort ratings."
+    />
+    <meta
+      name="twitter:image"
+      content="https://res.cloudinary.com/du0ea6cth/image/upload/v1774081062/ui-aesthetic-atlas/01-neubrutalism.gif"
+    />
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#10022;</text></svg>"
@@ -26,7 +48,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -39,16 +61,17 @@
       }
       :root {
         --bg: #080808;
-        --surface: #0f0f0f;
-        --border: #1e1e1e;
+        --surface: #0d0d0d;
+        --border: #282828;
         --accent: #ff3b00;
         --accent-dim: rgba(255, 59, 0, 0.12);
         --text: #f0ece4;
-        --text-muted: #888;
-        --text-dim: #444;
+        --text-muted: #aaa6a0;
+        --text-dim: #706c66;
         --font-display: "Bebas Neue", sans-serif;
         --font-mono: "DM Mono", monospace;
-        --font-body: "Instrument Serif", serif;
+        --font-body: "Manrope", system-ui, sans-serif;
+        --font-editorial: "Instrument Serif", Georgia, serif;
         --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
         --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
         --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
@@ -58,6 +81,10 @@
         background: var(--accent);
         color: #fff;
       }
+      :where(a, button, [tabindex]):focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 4px;
+      }
       html {
         scroll-behavior: smooth;
       }
@@ -65,18 +92,11 @@
         background: #050505;
         color: var(--text);
         font-family: var(--font-body);
-        font-size: 18px;
-        line-height: 1.6;
+        font-size: 16px;
+        line-height: 1.65;
         overflow-x: hidden;
         cursor: default;
-        opacity: 0;
-      }
-      body.loaded {
         opacity: 1;
-        transition: opacity 0.01s;
-      }
-      body.custom-cursor {
-        cursor: none;
       }
       .site-wrap {
         max-width: 1440px;
@@ -85,72 +105,6 @@
         border-left: 1px solid var(--border);
         border-right: 1px solid var(--border);
         position: relative;
-      }
-      .loader {
-        position: fixed;
-        inset: 0;
-        z-index: 10000;
-        background: var(--bg);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition:
-          opacity 0.6s var(--ease-out-expo),
-          visibility 0.6s;
-      }
-      .loader.done {
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-      }
-      .loader-bar {
-        width: 120px;
-        height: 2px;
-        background: var(--border);
-        position: relative;
-        overflow: hidden;
-        border-radius: 1px;
-      }
-      .loader-bar::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: var(--accent);
-        transform-origin: left;
-        animation: loadProgress 1.5s var(--ease-in-out-quint) forwards;
-      }
-      @keyframes loadProgress {
-        0% {
-          transform: scaleX(0);
-        }
-        100% {
-          transform: scaleX(1);
-        }
-      }
-      .cursor {
-        position: fixed;
-        width: 16px;
-        height: 16px;
-        border: 1.5px solid var(--accent);
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9999;
-        transform: translate(-50%, -50%);
-        transition:
-          width 0.2s var(--ease-out-quart),
-          height 0.2s var(--ease-out-quart),
-          border-color 0.2s;
-        mix-blend-mode: difference;
-        display: none;
-      }
-      .cursor.active {
-        width: 40px;
-        height: 40px;
-      }
-      @media (hover: hover) and (pointer: fine) {
-        .cursor {
-          display: block;
-        }
       }
       body::before {
         content: "";
@@ -222,14 +176,14 @@
         transform: translateY(-100%);
         z-index: 100;
         width: min(100%, 1440px);
-        padding: 0 48px;
-        height: 64px;
+        padding: 0 64px;
+        height: 72px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         border-bottom: 1px solid var(--border);
         background: rgba(8, 8, 8, 0.92);
-        backdrop-filter: blur(12px);
+        backdrop-filter: blur(18px);
         opacity: 0;
       }
       body.loaded header {
@@ -258,7 +212,7 @@
       nav {
         display: flex;
         align-items: center;
-        gap: 32px;
+        gap: 40px;
       }
       nav a {
         font-family: var(--font-mono);
@@ -333,20 +287,21 @@
       .hero {
         min-height: 100vh;
         position: relative;
-        padding-top: 64px;
+        padding-top: 72px;
         border-bottom: 1px solid var(--border);
         overflow: hidden;
         display: flex;
-        align-items: flex-end;
+        align-items: stretch;
       }
       .hero-left {
-        padding: 0 64px 80px;
+        min-height: calc(100vh - 72px);
+        padding: 72px 72px 64px;
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
+        justify-content: center;
         position: relative;
         z-index: 2;
-        max-width: 640px;
+        max-width: 700px;
       }
       .hero-label {
         font-family: var(--font-mono);
@@ -354,7 +309,14 @@
         letter-spacing: 0.2em;
         text-transform: uppercase;
         color: var(--accent);
-        margin-bottom: 24px;
+        width: fit-content;
+        max-width: 100%;
+        margin-bottom: 28px;
+        padding: 10px 16px;
+        border: 1px solid rgba(255, 59, 0, 0.42);
+        border-radius: 999px;
+        background: rgba(255, 59, 0, 0.07);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.025);
         opacity: 0;
       }
       body.loaded .hero-label {
@@ -362,15 +324,15 @@
       }
       .hero-title {
         font-family: var(--font-display);
-        font-size: clamp(64px, 9vw, 150px);
-        line-height: 0.9;
+        font-size: clamp(68px, 8.5vw, 136px);
+        line-height: 0.88;
         letter-spacing: 0.02em;
         color: var(--text);
         margin-bottom: 40px;
         perspective: 800px;
       }
       .hero-title em {
-        font-family: var(--font-body);
+        font-family: var(--font-editorial);
         font-style: italic;
         color: var(--accent);
       }
@@ -399,12 +361,12 @@
         gap: 28px;
       }
       .hero-desc {
-        font-family: var(--font-body);
+        font-family: var(--font-editorial);
         font-style: italic;
-        font-size: 18px;
+        font-size: 20px;
         color: var(--text-muted);
-        max-width: 460px;
-        line-height: 1.7;
+        max-width: 500px;
+        line-height: 1.55;
         opacity: 0;
       }
       body.loaded .hero-desc {
@@ -527,7 +489,7 @@
         width: 280px;
         height: 280px;
         margin: -140px 0 0 -140px;
-        animation: ringSpin 30s linear infinite;
+        animation: ringSpin 12s linear infinite;
       }
       .hv-ring--2 {
         width: 420px;
@@ -535,14 +497,14 @@
         margin: -210px 0 0 -210px;
         border-style: dashed;
         border-color: rgba(255, 255, 255, 0.04);
-        animation: ringSpinR 45s linear infinite;
+        animation: ringSpinR 18s linear infinite;
       }
       .hv-ring--3 {
         width: 160px;
         height: 160px;
         margin: -80px 0 0 -80px;
         border-color: rgba(255, 59, 0, 0.2);
-        animation: ringSpin 18s linear infinite;
+        animation: ringSpin 8s linear infinite;
       }
       @keyframes ringSpin {
         to {
@@ -580,6 +542,44 @@
         border-radius: 50%;
         box-shadow: 0 0 8px #ff8800;
       }
+      .hv-sweep {
+        position: absolute;
+        top: 50%;
+        left: 65%;
+        width: 420px;
+        height: 420px;
+        margin: -210px 0 0 -210px;
+        border-radius: 50%;
+        background: conic-gradient(
+          from 0deg,
+          transparent 0deg,
+          transparent 315deg,
+          rgba(255, 59, 0, 0.02) 330deg,
+          rgba(255, 59, 0, 0.22) 358deg,
+          var(--accent) 360deg
+        );
+        -webkit-mask: radial-gradient(circle, transparent 0 9%, #000 42%, transparent 72%);
+        mask: radial-gradient(circle, transparent 0 9%, #000 42%, transparent 72%);
+        opacity: 0.68;
+        z-index: 1;
+        animation: radarSweep 6s linear infinite;
+        pointer-events: none;
+      }
+      .hv-sweep::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 50%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--accent));
+        box-shadow: 0 0 12px rgba(255, 59, 0, 0.6);
+      }
+      @keyframes radarSweep {
+        to {
+          transform: rotate(360deg);
+        }
+      }
       .hv-label {
         position: absolute;
         font-family: var(--font-mono);
@@ -604,22 +604,22 @@
         color: rgba(255, 59, 0, 0.45);
       }
       .hv-float-1 {
-        animation: hvF1 12s ease-in-out infinite;
+        animation: hvF1 7s ease-in-out infinite;
       }
       .hv-float-2 {
-        animation: hvF2 15s ease-in-out infinite;
+        animation: hvF2 8s ease-in-out infinite;
       }
       .hv-float-3 {
-        animation: hvF3 18s ease-in-out infinite;
+        animation: hvF3 9s ease-in-out infinite;
       }
       .hv-float-4 {
-        animation: hvF4 14s ease-in-out infinite;
+        animation: hvF4 7.5s ease-in-out infinite;
       }
       .hv-float-5 {
-        animation: hvF5 20s ease-in-out infinite;
+        animation: hvF5 10s ease-in-out infinite;
       }
       .hv-float-6 {
-        animation: hvF6 16s ease-in-out infinite;
+        animation: hvF6 8.5s ease-in-out infinite;
       }
       @keyframes hvF1 {
         0%,
@@ -627,7 +627,7 @@
           transform: translate(0, 0);
         }
         50% {
-          transform: translate(8px, -12px);
+          transform: translate(18px, -24px);
         }
       }
       @keyframes hvF2 {
@@ -636,7 +636,7 @@
           transform: translate(0, 0);
         }
         50% {
-          transform: translate(-10px, 8px);
+          transform: translate(-22px, 16px);
         }
       }
       @keyframes hvF3 {
@@ -645,7 +645,7 @@
           transform: translate(0, 0);
         }
         50% {
-          transform: translate(6px, 10px);
+          transform: translate(14px, 20px);
         }
       }
       @keyframes hvF4 {
@@ -654,7 +654,7 @@
           transform: translate(0, 0);
         }
         50% {
-          transform: translate(-8px, -6px);
+          transform: translate(-18px, -16px);
         }
       }
       @keyframes hvF5 {
@@ -663,7 +663,7 @@
           transform: translate(0, 0);
         }
         50% {
-          transform: translate(12px, 4px);
+          transform: translate(24px, 10px);
         }
       }
       @keyframes hvF6 {
@@ -672,7 +672,7 @@
           transform: translate(0, 0);
         }
         50% {
-          transform: translate(-4px, -10px);
+          transform: translate(-12px, -22px);
         }
       }
       .hv-center {
@@ -773,10 +773,10 @@
       }
       .filter-bar {
         position: sticky;
-        top: 64px;
+        top: 72px;
         z-index: 90;
-        background: rgba(8, 8, 8, 0.95);
-        backdrop-filter: blur(12px);
+        background: rgba(8, 8, 8, 0.92);
+        backdrop-filter: blur(18px);
         border-bottom: 1px solid var(--border);
         padding: 0 48px;
         display: flex;
@@ -862,14 +862,85 @@
         border-color: var(--accent);
         box-shadow: 0 0 6px var(--accent);
       }
+      .browse-tools {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 18px 48px;
+        border-bottom: 1px solid var(--border);
+        background: linear-gradient(90deg, #0d0d0d, #10100f 50%, #0d0d0d);
+      }
+      .pattern-search {
+        position: relative;
+        flex: 1;
+        max-width: 560px;
+      }
+      .pattern-search::before {
+        content: "/";
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--accent);
+        font-family: var(--font-mono);
+        font-size: 13px;
+        pointer-events: none;
+      }
+      .pattern-search input {
+        width: 100%;
+        min-height: 48px;
+        padding: 10px 16px 10px 36px;
+        border: 1px solid var(--border);
+        border-radius: 2px;
+        background: var(--bg);
+        color: var(--text);
+        font: 12px/1.4 var(--font-mono);
+        letter-spacing: 0.05em;
+      }
+      .pattern-search input::placeholder {
+        color: var(--text-dim);
+      }
+      .view-switch {
+        display: inline-flex;
+        border: 1px solid var(--border);
+        padding: 3px;
+        background: var(--bg);
+      }
+      .view-btn {
+        border: 0;
+        background: transparent;
+        color: var(--text-muted);
+        padding: 9px 14px;
+        cursor: pointer;
+        font: 10px/1 var(--font-mono);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .view-btn.active {
+        background: var(--accent);
+        color: #fff;
+      }
+      .no-results {
+        padding: 72px 48px;
+        border-bottom: 1px solid var(--border);
+        text-align: center;
+        color: var(--text-muted);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+      }
       .gallery {
         padding: 0;
+      }
+      .gallery-section {
+        scroll-margin-top: 72px;
       }
       .pattern-entry {
         border-bottom: 1px solid var(--border);
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        min-height: 600px;
+        grid-template-columns: minmax(0, 1.12fr) minmax(420px, 0.88fr);
+        min-height: 620px;
         max-height: 2000px;
         position: relative;
         transition:
@@ -888,6 +959,9 @@
         border-bottom-width: 0;
         margin: 0;
         pointer-events: none;
+      }
+      .pattern-entry[hidden] {
+        display: none !important;
       }
       .pattern-entry:nth-child(even) {
         direction: rtl;
@@ -939,7 +1013,7 @@
       .pattern-preview {
         position: relative;
         overflow: hidden;
-        background: linear-gradient(135deg, #0a0a0a 0%, #111 40%, #0a0808 100%);
+        background: linear-gradient(135deg, #0a0a0a 0%, #151412 45%, #0a0808 100%);
         border-right: 1px solid var(--border);
       }
       .pattern-entry:nth-child(even) .pattern-preview {
@@ -973,11 +1047,248 @@
       .pattern-entry.in-view .pattern-preview.stagger-child {
         opacity: 1;
       }
+      .overview-open {
+        display: none;
+      }
+      .gallery.overview {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-auto-rows: 1fr;
+        align-items: stretch;
+        gap: 1px;
+        padding: 1px;
+        background: var(--border);
+      }
+      .gallery.overview .pattern-entry {
+        display: flex;
+        flex-direction: column;
+        align-self: stretch;
+        min-height: 0;
+        max-height: none;
+        border: 0;
+        background: var(--bg);
+        direction: ltr;
+      }
+      .gallery.overview .pattern-entry > * {
+        direction: ltr;
+      }
+      .gallery.overview .pattern-preview,
+      .gallery.overview .pattern-entry:nth-child(even) .pattern-preview {
+        width: 100%;
+        min-height: 0;
+        aspect-ratio: 3 / 2;
+        border: 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .gallery.overview .pattern-preview video {
+        transform: scale(1.04) !important;
+      }
+      .gallery.overview .pattern-info {
+        display: flex;
+        flex: 1;
+        padding: 24px;
+        justify-content: flex-start;
+      }
+      .gallery.overview .pattern-number {
+        margin-bottom: 10px;
+      }
+      .gallery.overview .pattern-name {
+        font-size: clamp(28px, 3vw, 42px);
+        margin-bottom: 14px;
+      }
+      .gallery.overview .pattern-tagline {
+        font-size: 14px;
+        margin-bottom: 20px;
+      }
+      .gallery.overview .pattern-meta,
+      .gallery.overview .pattern-tags {
+        display: none;
+      }
+      .gallery.overview .overview-open {
+        display: inline-flex;
+        align-items: center;
+        align-self: flex-start;
+        margin-top: 0;
+        border: 0;
+        border-bottom: 1px solid var(--accent);
+        background: transparent;
+        color: var(--accent);
+        padding: 8px 0 5px;
+        cursor: pointer;
+        font: 10px/1.2 var(--font-mono);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .pattern-actions {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-top: 20px;
+      }
+      .gallery.overview .pattern-actions {
+        margin-top: auto;
+      }
+      .gallery.overview .overview-open {
+        margin-top: 0;
+      }
+      .compare-toggle {
+        border: 1px solid var(--border);
+        border-radius: 2px;
+        background: transparent;
+        color: var(--text-muted);
+        padding: 8px 10px;
+        cursor: pointer;
+        font: 10px/1.2 var(--font-mono);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .compare-toggle:hover,
+      .compare-toggle.active {
+        border-color: var(--accent);
+        color: var(--accent);
+        background: var(--accent-dim);
+      }
+      .compare-toggle:disabled {
+        cursor: not-allowed;
+        opacity: 0.35;
+      }
+      .compare-tray {
+        position: fixed;
+        left: 50%;
+        bottom: 24px;
+        z-index: 160;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        width: min(92vw, 560px);
+        padding: 12px 14px;
+        border: 1px solid #333;
+        background: rgba(15, 15, 15, 0.96);
+        box-shadow: 0 16px 50px rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(16px);
+      }
+      .compare-tray[hidden] {
+        display: none;
+      }
+      .compare-summary {
+        flex: 1;
+        color: var(--text);
+        font: 11px/1.4 var(--font-mono);
+        letter-spacing: 0.05em;
+      }
+      .compare-action {
+        border: 1px solid var(--border);
+        background: transparent;
+        color: var(--text-muted);
+        padding: 9px 12px;
+        cursor: pointer;
+        font: 10px/1 var(--font-mono);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .compare-action.primary {
+        border-color: var(--accent);
+        background: var(--accent);
+        color: #fff;
+      }
+      .compare-action:disabled {
+        cursor: not-allowed;
+        opacity: 0.4;
+      }
+      .compare-dialog {
+        width: min(1100px, calc(100vw - 32px));
+        max-height: calc(100dvh - 32px);
+        margin: auto;
+        border: 1px solid #333;
+        background: var(--bg);
+        color: var(--text);
+        padding: 0;
+      }
+      .compare-dialog::backdrop {
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(6px);
+      }
+      .compare-dialog-inner {
+        max-height: calc(100dvh - 34px);
+        overflow: auto;
+      }
+      .compare-dialog-header {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 24px;
+        border-bottom: 1px solid var(--border);
+        background: rgba(8, 8, 8, 0.96);
+        backdrop-filter: blur(12px);
+      }
+      .compare-dialog-title {
+        font: 32px/1 var(--font-display);
+        letter-spacing: 0.04em;
+      }
+      .compare-close {
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--border);
+        background: transparent;
+        color: var(--text);
+        cursor: pointer;
+        font-size: 20px;
+      }
+      .compare-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      }
+      .compare-card {
+        min-width: 0;
+        padding: 28px 24px 36px;
+        border-right: 1px solid var(--border);
+      }
+      .compare-card:last-child {
+        border-right: 0;
+      }
+      .compare-card-number {
+        color: var(--accent);
+        font: 10px/1 var(--font-mono);
+        letter-spacing: 0.12em;
+      }
+      .compare-card h3 {
+        margin: 12px 0 10px;
+        font: 36px/1 var(--font-display);
+        letter-spacing: 0.03em;
+      }
+      .compare-card-tagline {
+        min-height: 72px;
+        margin-bottom: 28px;
+        color: var(--text-muted);
+        font-style: italic;
+        font-size: 15px;
+      }
+      .compare-field {
+        padding: 16px 0;
+        border-top: 1px solid var(--border);
+      }
+      .compare-field dt {
+        margin-bottom: 6px;
+        color: var(--accent);
+        font: 9px/1.3 var(--font-mono);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .compare-field dd {
+        color: #c0bbb3;
+        font-size: 14px;
+        line-height: 1.5;
+      }
       .pattern-info {
-        padding: 72px 64px;
+        padding: 64px 56px;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        background: radial-gradient(circle at 100% 0%, rgba(255, 59, 0, 0.045), transparent 38%);
       }
       .pattern-number {
         font-family: var(--font-mono);
@@ -993,19 +1304,21 @@
       }
       .pattern-name {
         font-family: var(--font-display);
-        font-size: clamp(40px, 5vw, 72px);
-        line-height: 0.95;
+        font-size: clamp(44px, 4.7vw, 68px);
+        line-height: 0.92;
         letter-spacing: 0.03em;
         color: var(--text);
         margin-bottom: 20px;
+        text-wrap: balance;
+        overflow-wrap: normal;
       }
       .pattern-tagline {
-        font-family: var(--font-body);
+        font-family: var(--font-editorial);
         font-style: italic;
-        font-size: 17px;
+        font-size: 19px;
         color: var(--text-muted);
         margin-bottom: 40px;
-        line-height: 1.65;
+        line-height: 1.55;
         max-width: 440px;
         border-left: 2px solid var(--accent);
         padding-left: 16px;
@@ -1041,9 +1354,9 @@
       }
       .meta-value {
         font-family: var(--font-body);
-        color: #c0bbb3;
-        font-size: 15px;
-        line-height: 1.55;
+        color: #cbc7c0;
+        font-size: 14px;
+        line-height: 1.6;
       }
       .pattern-tags {
         display: flex;
@@ -1077,7 +1390,7 @@
         align-items: center;
         justify-content: center;
         gap: 24px;
-        padding: 80px 48px;
+        padding: 40px 48px;
       }
       .divider-line {
         height: 1px;
@@ -1109,14 +1422,15 @@
         transform: rotate(0deg) scale(1);
       }
       .matrix-section {
-        padding: 120px 48px;
+        scroll-margin-top: 24px;
+        padding: 72px 48px;
         border-bottom: 1px solid var(--border);
       }
       .section-header {
         display: flex;
         align-items: baseline;
         gap: 24px;
-        margin-bottom: 64px;
+        margin-bottom: 40px;
       }
       .section-title {
         font-family: var(--font-display);
@@ -1184,6 +1498,15 @@
         color: var(--text);
         transition: color 0.3s var(--ease-out-quart);
       }
+      .matrix-link {
+        border: 0;
+        background: transparent;
+        color: inherit;
+        font: inherit;
+        letter-spacing: inherit;
+        cursor: pointer;
+        text-align: left;
+      }
       .matrix-vibe {
         font-family: var(--font-body);
         font-style: italic;
@@ -1232,15 +1555,34 @@
         background: rgba(255, 59, 0, 0.06);
       }
       footer {
-        padding: 80px 48px;
-        border-top: 1px solid var(--border);
+        position: relative;
+        min-height: 320px;
+        margin: 48px;
+        padding: 64px;
+        border: 1px solid var(--border);
+        border-radius: 28px;
         display: flex;
-        align-items: flex-end;
+        align-items: center;
         justify-content: space-between;
+        gap: 64px;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 88% 20%, rgba(255, 59, 0, 0.16), transparent 34%),
+          linear-gradient(135deg, #121110, #090909 62%);
+      }
+      footer::before {
+        content: "20 / 20";
+        position: absolute;
+        right: 34px;
+        bottom: -42px;
+        font: 180px/1 var(--font-display);
+        letter-spacing: 0.02em;
+        color: rgba(255, 255, 255, 0.025);
+        pointer-events: none;
       }
       .footer-left .footer-title {
         font-family: var(--font-display);
-        font-size: 48px;
+        font-size: clamp(48px, 6vw, 80px);
         letter-spacing: 0.04em;
         margin-bottom: 12px;
         background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
@@ -1249,10 +1591,10 @@
         background-clip: text;
       }
       .footer-left .footer-sub {
-        font-family: var(--font-body);
+        font-family: var(--font-editorial);
         font-style: italic;
         color: var(--text-muted);
-        font-size: 16px;
+        font-size: 20px;
       }
       .footer-links {
         display: flex;
@@ -1265,14 +1607,20 @@
         font-size: 11px;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: var(--text-muted);
+        color: var(--text);
         text-decoration: none;
+        padding: 10px 16px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.025);
         transition:
           color 0.3s var(--ease-out-quart),
           transform 0.2s var(--ease-out-quart);
       }
       .footer-links a:hover {
         color: var(--accent);
+        border-color: var(--accent);
+        background: var(--accent-dim);
         transform: translateX(4px);
       }
       .footer-credit {
@@ -1354,13 +1702,13 @@
       }
       @media (min-width: 1200px) {
         .pattern-entry {
-          min-height: 700px;
+          min-height: 660px;
         }
         .pattern-info {
-          padding: 80px 72px;
+          padding: 72px 64px;
         }
       }
-      @media (max-width: 900px) {
+      @media (max-width: 1024px) {
         header {
           padding: 0 20px;
         }
@@ -1419,10 +1767,11 @@
         }
         .hero {
           min-height: 100dvh;
-          padding-top: 64px;
+          padding-top: 72px;
         }
         .hero-left {
-          padding: 100px 20px 60px;
+          min-height: calc(100dvh - 72px);
+          padding: 72px 24px 56px;
           max-width: 100%;
         }
         .hero-stats {
@@ -1444,6 +1793,12 @@
           padding: 14px 16px;
           font-size: 10px;
         }
+        .browse-tools {
+          padding: 16px 20px;
+        }
+        .gallery.overview {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
         .pattern-entry {
           grid-template-columns: 1fr;
           direction: ltr !important;
@@ -1457,15 +1812,16 @@
           border-bottom: 1px solid var(--border);
         }
         .pattern-preview {
-          min-height: 240px;
+          min-height: 0;
+          aspect-ratio: 3 / 2;
           border-right: none !important;
           border-bottom: 1px solid var(--border);
         }
         .pattern-info {
-          padding: 32px 20px;
+          padding: 40px 24px;
         }
         .pattern-tagline {
-          font-size: 15px;
+          font-size: 18px;
           margin-bottom: 28px;
         }
         .meta-row {
@@ -1536,16 +1892,18 @@
           color: var(--text-dim);
         }
         footer {
-          padding: 48px 20px;
+          min-height: 0;
+          margin: 24px 20px 40px;
+          padding: 48px 32px;
           flex-direction: column;
           gap: 32px;
           align-items: flex-start;
         }
         .footer-left .footer-title {
-          font-size: 32px;
+          font-size: 48px;
         }
         .footer-left .footer-sub {
-          font-size: 14px;
+          font-size: 18px;
         }
         .footer-links {
           align-items: flex-start;
@@ -1555,12 +1913,18 @@
           font-size: 12px;
         }
         .section-divider {
-          padding: 40px 20px;
+          padding: 28px 20px;
         }
       }
       @media (max-width: 600px) {
         header {
           height: 56px;
+        }
+        .hero {
+          padding-top: 56px;
+        }
+        .hero-left {
+          min-height: calc(100dvh - 56px);
         }
         .logo {
           font-size: 18px;
@@ -1568,8 +1932,11 @@
         .filter-bar {
           top: 56px;
         }
+        .gallery-section {
+          scroll-margin-top: 56px;
+        }
         .hero-left {
-          padding: 80px 16px 48px;
+          padding: 56px 16px 40px;
         }
         .hero-title {
           font-size: clamp(44px, 14vw, 72px);
@@ -1612,16 +1979,17 @@
           display: none;
         }
         .pattern-preview {
-          min-height: 200px;
+          min-height: 0;
+          aspect-ratio: 4 / 3;
         }
         .pattern-info {
-          padding: 24px 16px;
+          padding: 32px 18px;
         }
         .pattern-name {
-          font-size: clamp(28px, 9vw, 44px);
+          font-size: clamp(36px, 11vw, 52px);
         }
         .pattern-tagline {
-          font-size: 14px;
+          font-size: 17px;
           padding-left: 12px;
           margin-bottom: 24px;
         }
@@ -1635,7 +2003,7 @@
           font-size: 10px;
         }
         .meta-value {
-          font-size: 13px;
+          font-size: 14px;
         }
         .pattern-tags {
           gap: 6px;
@@ -1657,6 +2025,50 @@
           width: 6px;
           height: 6px;
         }
+        .browse-tools {
+          align-items: stretch;
+          flex-direction: column;
+          gap: 12px;
+          padding: 14px 16px;
+        }
+        .pattern-search {
+          max-width: none;
+        }
+        .view-switch {
+          align-self: flex-start;
+        }
+        .gallery.overview {
+          grid-template-columns: 1fr;
+          grid-auto-rows: max-content;
+        }
+        .gallery.overview .pattern-info {
+          padding: 20px 16px 24px;
+        }
+        .pattern-actions {
+          flex-wrap: wrap;
+        }
+        .compare-tray {
+          bottom: 12px;
+          gap: 8px;
+          padding: 10px;
+        }
+        .compare-summary {
+          font-size: 9px;
+        }
+        .compare-action {
+          padding: 8px;
+          font-size: 9px;
+        }
+        .compare-grid {
+          grid-template-columns: 1fr;
+        }
+        .compare-card {
+          border-right: 0;
+          border-bottom: 1px solid var(--border);
+        }
+        .compare-card-tagline {
+          min-height: 0;
+        }
         .matrix-section {
           padding: 48px 16px;
         }
@@ -1667,10 +2079,11 @@
           font-size: 14px;
         }
         footer {
-          padding: 40px 16px;
+          margin: 16px;
+          padding: 36px 20px;
         }
         .footer-left .footer-title {
-          font-size: 28px;
+          font-size: 38px;
         }
         .footer-credit {
           font-size: 9px;
@@ -1688,7 +2101,7 @@
           font-size: 40px;
         }
         .hero-left {
-          padding: 80px 12px 28px;
+          padding: 48px 12px 28px;
         }
         .pattern-info {
           padding: 20px 12px;
@@ -1704,7 +2117,8 @@
           padding: 40px 12px;
         }
         footer {
-          padding: 32px 12px;
+          margin: 12px;
+          padding: 32px 16px;
         }
       }
       @media (pointer: coarse) {
@@ -1738,9 +2152,6 @@
         body {
           opacity: 1 !important;
         }
-        .loader {
-          display: none !important;
-        }
         .reveal,
         .stagger-child,
         .char-reveal,
@@ -1758,9 +2169,6 @@
       <style>
         body {
           opacity: 1 !important;
-        }
-        .loader {
-          display: none !important;
         }
         .reveal,
         .stagger-child {
@@ -1806,21 +2214,19 @@
       gtag('config', 'G-E3Y8K40PTJ');
     </script>
   </head>
-  <body>
-    <div class="loader" id="loader"><div class="loader-bar"></div></div>
+  <body class="loaded">
     <a href="#gallery" class="skip-nav">Skip to gallery</a>
-    <div class="cursor" id="cursor"></div>
     <button class="back-to-top" id="backToTop" aria-label="Back to top">
       &#8593;
     </button>
     <div class="site-wrap">
       <header>
         <a href="#" class="logo">UI <span>&#10022;</span> ATLAS</a>
-        <nav id="mainNav">
+        <nav id="mainNav" aria-label="Primary navigation">
           <a href="#gallery">Gallery</a>
           <a href="#matrix">Matrix</a>
           <a
-            href="https://github.com/Achal13jain/ui-design-patterns"
+            href="https://github.com/Achal13jain/design-patterns"
             target="_blank"
             rel="noopener noreferrer"
             >GitHub</a
@@ -1832,6 +2238,7 @@
           id="navToggle"
           aria-label="Toggle navigation"
           aria-expanded="false"
+          aria-controls="mainNav"
         >
           <span class="nav-toggle-bar"></span>
           <span class="nav-toggle-bar"></span>
@@ -1839,7 +2246,8 @@
         </button>
       </header>
       <div class="nav-overlay" id="navOverlay"></div>
-      <section class="hero">
+      <main id="main-content">
+        <section class="hero">
         <div class="hero-left">
           <p class="hero-label">
             &#10022; &nbsp; Visual Inspiration Gallery &nbsp; &middot; &nbsp;
@@ -1858,7 +2266,7 @@
                 <div class="stat-label">Patterns</div>
               </div>
               <div class="stat">
-                <div class="stat-num" data-target="5" data-suffix="s">0</div>
+                <div class="stat-num" data-target="10" data-suffix="s">0</div>
                 <div class="stat-label">Each loop</div>
               </div>
               <div class="stat">
@@ -1872,6 +2280,7 @@
           <div class="hero-visual">
             <div class="hv-cross-h"></div>
             <div class="hv-cross-v"></div>
+            <div class="hv-sweep" aria-hidden="true"></div>
             <div class="hv-ring hv-ring--1"></div>
             <div class="hv-ring hv-ring--2"></div>
             <div class="hv-ring hv-ring--3"></div>
@@ -1943,7 +2352,8 @@
           </div>
         </div>
       </section>
-      <div class="filter-bar" id="gallery">
+      <section class="gallery-section" id="gallery">
+      <div class="filter-bar">
         <button class="filter-btn active" data-filter="all" aria-pressed="true">
           All &mdash; 20
         </button>
@@ -1978,6 +2388,38 @@
         </button>
         <span class="filter-count" id="filterCount" aria-live="polite"></span>
       </div>
+      <section class="browse-tools" aria-label="Gallery tools">
+        <div class="pattern-search">
+          <input
+            id="patternSearch"
+            type="search"
+            autocomplete="off"
+            aria-label="Search design patterns"
+            placeholder="Search patterns, vibes, tools, or use cases"
+          />
+        </div>
+        <div class="view-switch" role="group" aria-label="Gallery view">
+          <button
+            class="view-btn active"
+            type="button"
+            data-view="cinematic"
+            aria-pressed="true"
+          >
+            Cinematic
+          </button>
+          <button
+            class="view-btn"
+            type="button"
+            data-view="overview"
+            aria-pressed="false"
+          >
+            Overview
+          </button>
+        </div>
+      </section>
+      <div class="no-results" id="noResults" role="status" hidden>
+        No patterns match this search. Try another term or filter.
+      </div>
       <section class="gallery" id="gallery-entries">
         <article
           class="pattern-entry"
@@ -1987,8 +2429,7 @@
         >
           <div class="pattern-preview">
             <video
-              src="https://res.cloudinary.com/du0ea6cth/video/upload/v1774096114/ui-aesthetic-atlas/01-neubrutalism.mp4"
-              autoplay
+              src="videos/pingpong/01-neubrutalism.mp4"
               muted
               loop
               playsinline
@@ -1998,7 +2439,7 @@
           </div>
           <div class="pattern-info">
             <div class="pattern-number">01 / 20</div>
-            <h2 class="pattern-name">Neu-<br />brutalism</h2>
+            <h2 class="pattern-name">Neubrutalism</h2>
             <p class="pattern-tagline">
               Raw, confrontational, unapologetically bold. The design language
               of builders who ship.
@@ -2043,8 +2484,7 @@
         >
           <div class="pattern-preview">
             <video
-              src="https://res.cloudinary.com/du0ea6cth/video/upload/v1774096132/ui-aesthetic-atlas/02-glassmorphism.mp4"
-              autoplay
+              src="videos/pingpong/02-glassmorphism.mp4"
               muted
               loop
               playsinline
@@ -2054,7 +2494,7 @@
           </div>
           <div class="pattern-info">
             <div class="pattern-number">02 / 20</div>
-            <h2 class="pattern-name">Glass-<br />morphism</h2>
+            <h2 class="pattern-name">Glassmorphism</h2>
             <p class="pattern-tagline">
               Frosted glass, elevated surfaces, premium restraint. The default
               aesthetic of modern SaaS.
@@ -2099,8 +2539,7 @@
         >
           <div class="pattern-preview">
             <video
-              src="https://res.cloudinary.com/du0ea6cth/video/upload/v1774096152/ui-aesthetic-atlas/03-bento-grid.mp4"
-              autoplay
+              src="videos/pingpong/03-bento-grid.mp4"
               muted
               loop
               playsinline
@@ -2115,7 +2554,7 @@
           </div>
           <div class="pattern-info">
             <div class="pattern-number">03 / 20</div>
-            <h2 class="pattern-name">Bento<br />Grid</h2>
+            <h2 class="pattern-name">Bento Grid</h2>
             <p class="pattern-tagline">
               Apple's keynote layout system, democratized. Asymmetric cards that
               make any feature feel flagship.
@@ -2161,8 +2600,7 @@
         >
           <div class="pattern-preview">
             <video
-              src="https://res.cloudinary.com/du0ea6cth/video/upload/v1774096171/ui-aesthetic-atlas/04-neumorphism.mp4"
-              autoplay
+              src="videos/pingpong/04-neumorphism.mp4"
               muted
               loop
               playsinline
@@ -2172,7 +2610,7 @@
           </div>
           <div class="pattern-info">
             <div class="pattern-number">04 / 20</div>
-            <h2 class="pattern-name">Neu-<br />morphism</h2>
+            <h2 class="pattern-name">Neumorphism</h2>
             <p class="pattern-tagline">
               Surfaces extruded from the background itself. Tactile,
               monochromatic, meditative.
@@ -2218,8 +2656,7 @@
         >
           <div class="pattern-preview">
             <video
-              src="https://res.cloudinary.com/du0ea6cth/video/upload/v1774096180/ui-aesthetic-atlas/05-claymorphism.mp4"
-              autoplay
+              src="videos/pingpong/05-claymorphism.mp4"
               muted
               loop
               playsinline
@@ -2229,7 +2666,7 @@
           </div>
           <div class="pattern-info">
             <div class="pattern-number">05 / 20</div>
-            <h2 class="pattern-name">Clay-<br />morphism</h2>
+            <h2 class="pattern-name">Claymorphism</h2>
             <p class="pattern-tagline">
               3D-inflated, squishy, impossible not to touch. Playful design that
               converts.
@@ -2275,8 +2712,7 @@
         >
           <div class="pattern-preview">
             <video
-              src="https://res.cloudinary.com/du0ea6cth/video/upload/v1774096189/ui-aesthetic-atlas/06-aurora-ui.mp4"
-              autoplay
+              src="videos/pingpong/06-aurora-ui.mp4"
               muted
               loop
               playsinline
@@ -2286,7 +2722,7 @@
           </div>
           <div class="pattern-info">
             <div class="pattern-number">06 / 20</div>
-            <h2 class="pattern-name">Aurora<br />UI</h2>
+            <h2 class="pattern-name">Aurora UI</h2>
             <p class="pattern-tagline">
               Northern lights, bottled in a browser. Fluid color gradients that
               feel alive.
@@ -2331,8 +2767,7 @@
         >
           <div class="pattern-preview">
             <video
-              src="https://res.cloudinary.com/du0ea6cth/video/upload/v1774096192/ui-aesthetic-atlas/07-cyberpunk-ui.mp4"
-              autoplay
+              src="videos/pingpong/07-cyberpunk-ui.mp4"
               muted
               loop
               playsinline
@@ -2342,7 +2777,7 @@
           </div>
           <div class="pattern-info">
             <div class="pattern-number">07 / 20</div>
-            <h2 class="pattern-name">Cyber-<br />punk UI</h2>
+            <h2 class="pattern-name">Cyberpunk UI</h2>
             <p class="pattern-tagline">
               Neon on black, data-dense, terminal energy. Built for the machine
               age.
@@ -2387,8 +2822,7 @@
         >
           <div class="pattern-preview">
             <video
-              src="https://res.cloudinary.com/du0ea6cth/video/upload/v1774096196/ui-aesthetic-atlas/08-y2k-aesthetic.mp4"
-              autoplay
+              src="videos/pingpong/08-y2k-aesthetic.mp4"
               muted
               loop
               playsinline
@@ -2398,7 +2832,7 @@
           </div>
           <div class="pattern-info">
             <div class="pattern-number">08 / 20</div>
-            <h2 class="pattern-name">Y2K<br />Aesthetic</h2>
+            <h2 class="pattern-name">Y2K Aesthetic</h2>
             <p class="pattern-tagline">
               Chrome gradients, pixel fonts, and early-internet chaos. Nostalgia
               weaponized as brand identity.
@@ -2443,8 +2877,7 @@
         >
           <div class="pattern-preview">
             <video
-              src="https://res.cloudinary.com/du0ea6cth/video/upload/v1774096200/ui-aesthetic-atlas/09-flat-design.mp4"
-              autoplay
+              src="videos/pingpong/09-flat-design.mp4"
               muted
               loop
               playsinline
@@ -2454,7 +2887,7 @@
           </div>
           <div class="pattern-info">
             <div class="pattern-number">09 / 20</div>
-            <h2 class="pattern-name">Flat<br />Design</h2>
+            <h2 class="pattern-name">Flat Design</h2>
             <p class="pattern-tagline">
               No shadows. No gradients. Just shape, color, and the confidence to
               leave it there.
@@ -2499,8 +2932,7 @@
         >
           <div class="pattern-preview">
             <video
-              src="https://res.cloudinary.com/du0ea6cth/video/upload/v1774096204/ui-aesthetic-atlas/10-material-design.mp4"
-              autoplay
+              src="videos/pingpong/10-material-design.mp4"
               muted
               loop
               playsinline
@@ -2510,7 +2942,7 @@
           </div>
           <div class="pattern-info">
             <div class="pattern-number">10 / 20</div>
-            <h2 class="pattern-name">Material<br />Design</h2>
+            <h2 class="pattern-name">Material Design</h2>
             <p class="pattern-tagline">
               Google's physics-grounded system. Elevation as a design language.
               Structure as a feature.
@@ -2556,8 +2988,7 @@
         >
           <div class="pattern-preview">
             <video
-              src="https://res.cloudinary.com/du0ea6cth/video/upload/v1774096207/ui-aesthetic-atlas/11-skeuomorphism.mp4"
-              autoplay
+              src="videos/pingpong/11-skeuomorphism.mp4"
               muted
               loop
               playsinline
@@ -2567,7 +2998,7 @@
           </div>
           <div class="pattern-info">
             <div class="pattern-number">11 / 20</div>
-            <h2 class="pattern-name">Skeuo-<br />morphism</h2>
+            <h2 class="pattern-name">Skeuomorphism</h2>
             <p class="pattern-tagline">
               The real world, rendered in pixels. Every shadow, texture, and
               knob earned.
@@ -2612,8 +3043,7 @@
         >
           <div class="pattern-preview">
             <video
-              src="https://res.cloudinary.com/du0ea6cth/video/upload/v1774096211/ui-aesthetic-atlas/12-bauhaus.mp4"
-              autoplay
+              src="videos/pingpong/12-bauhaus.mp4"
               muted
               loop
               playsinline
@@ -2623,7 +3053,7 @@
           </div>
           <div class="pattern-info">
             <div class="pattern-number">12 / 20</div>
-            <h2 class="pattern-name">Bau-<br />haus</h2>
+            <h2 class="pattern-name">Bauhaus</h2>
             <p class="pattern-tagline">
               Form follows function. Grid. Geometry. Primary colors. Nothing
               that doesn't earn its place.
@@ -2669,8 +3099,7 @@
         >
           <div class="pattern-preview">
             <video
-              src="https://res.cloudinary.com/du0ea6cth/video/upload/v1774096214/ui-aesthetic-atlas/13-brutalism.mp4"
-              autoplay
+              src="videos/pingpong/13-brutalism.mp4"
               muted
               loop
               playsinline
@@ -2680,7 +3109,7 @@
           </div>
           <div class="pattern-info">
             <div class="pattern-number">13 / 20</div>
-            <h2 class="pattern-name">Bru-<br />talism</h2>
+            <h2 class="pattern-name">Brutalism</h2>
             <p class="pattern-tagline">
               Anti-design as a design statement. Raw HTML energy, deliberately
               unpolished.
@@ -2724,8 +3153,7 @@
         >
           <div class="pattern-preview">
             <video
-              src="https://res.cloudinary.com/du0ea6cth/video/upload/v1774096217/ui-aesthetic-atlas/14-minimalism.mp4"
-              autoplay
+              src="videos/pingpong/14-minimalism.mp4"
               muted
               loop
               playsinline
@@ -2735,7 +3163,7 @@
           </div>
           <div class="pattern-info">
             <div class="pattern-number">14 / 20</div>
-            <h2 class="pattern-name">Mini-<br />malism</h2>
+            <h2 class="pattern-name">Minimalism</h2>
             <p class="pattern-tagline">
               Restraint is the hardest design skill. This is its highest form.
             </p>
@@ -2778,8 +3206,7 @@
         >
           <div class="pattern-preview">
             <video
-              src="https://res.cloudinary.com/du0ea6cth/video/upload/v1774096221/ui-aesthetic-atlas/15-retro-futurism.mp4"
-              autoplay
+              src="videos/pingpong/15-retro-futurism.mp4"
               muted
               loop
               playsinline
@@ -2789,7 +3216,7 @@
           </div>
           <div class="pattern-info">
             <div class="pattern-number">15 / 20</div>
-            <h2 class="pattern-name">Retro<br />Futurism</h2>
+            <h2 class="pattern-name">Retro Futurism</h2>
             <p class="pattern-tagline">
               The future, as imagined in 1975. Scanlines, CRT glow, and
               undelivered optimism.
@@ -2834,8 +3261,7 @@
         >
           <div class="pattern-preview">
             <video
-              src="https://res.cloudinary.com/du0ea6cth/video/upload/v1774096224/ui-aesthetic-atlas/16-dark-mode.mp4"
-              autoplay
+              src="videos/pingpong/16-dark-mode.mp4"
               muted
               loop
               playsinline
@@ -2845,7 +3271,7 @@
           </div>
           <div class="pattern-info">
             <div class="pattern-number">16 / 20</div>
-            <h2 class="pattern-name">Dark<br />Mode</h2>
+            <h2 class="pattern-name">Dark Mode</h2>
             <p class="pattern-tagline">
               High contrast. Eye-optimized. The default language of tools that
               respect the focused mind.
@@ -2891,8 +3317,7 @@
         >
           <div class="pattern-preview">
             <video
-              src="https://res.cloudinary.com/du0ea6cth/video/upload/v1774096228/ui-aesthetic-atlas/17-motion-driven.mp4"
-              autoplay
+              src="videos/pingpong/17-motion-driven.mp4"
               muted
               loop
               playsinline
@@ -2902,7 +3327,7 @@
           </div>
           <div class="pattern-info">
             <div class="pattern-number">17 / 20</div>
-            <h2 class="pattern-name">Motion<br />Driven</h2>
+            <h2 class="pattern-name">Motion Driven</h2>
             <p class="pattern-tagline">
               Animation is not decoration &mdash; it is the interface. Every
               transition carries meaning.
@@ -2947,8 +3372,7 @@
         >
           <div class="pattern-preview">
             <video
-              src="https://res.cloudinary.com/du0ea6cth/video/upload/v1774096232/ui-aesthetic-atlas/18-maximalism.mp4"
-              autoplay
+              src="videos/pingpong/18-maximalism.mp4"
               muted
               loop
               playsinline
@@ -2958,7 +3382,7 @@
           </div>
           <div class="pattern-info">
             <div class="pattern-number">18 / 20</div>
-            <h2 class="pattern-name">Maxi-<br />malism</h2>
+            <h2 class="pattern-name">Maximalism</h2>
             <p class="pattern-tagline">
               More is more. Layered, dense, visually overwhelming &mdash; on
               purpose.
@@ -3004,8 +3428,7 @@
         >
           <div class="pattern-preview">
             <video
-              src="https://res.cloudinary.com/du0ea6cth/video/upload/v1774096234/ui-aesthetic-atlas/19-organic-ui.mp4"
-              autoplay
+              src="videos/pingpong/19-organic-ui.mp4"
               muted
               loop
               playsinline
@@ -3015,7 +3438,7 @@
           </div>
           <div class="pattern-info">
             <div class="pattern-number">19 / 20</div>
-            <h2 class="pattern-name">Organic<br />UI</h2>
+            <h2 class="pattern-name">Organic UI</h2>
             <p class="pattern-tagline">
               Blob shapes, earth tones, and the anti-grid. Design that breathes.
             </p>
@@ -3059,8 +3482,8 @@
         >
           <div class="pattern-preview">
             <video
-              src="https://res.cloudinary.com/du0ea6cth/video/upload/v1774096238/ui-aesthetic-atlas/20-liquid-glass.mp4"
-              autoplay
+              src="videos/pingpong/20-liquid-glass.mp4"
+              poster="videos/posters/20-liquid-glass.webp"
               muted
               loop
               playsinline
@@ -3070,7 +3493,7 @@
           </div>
           <div class="pattern-info">
             <div class="pattern-number">20 / 20</div>
-            <h2 class="pattern-name">Liquid<br />Glass</h2>
+            <h2 class="pattern-name">Liquid Glass</h2>
             <p class="pattern-tagline">
               Apple Vision Pro aesthetics. Translucent surfaces in constant,
               morphing motion.
@@ -3106,6 +3529,7 @@
             </div>
           </div>
         </article>
+      </section>
       </section>
       <div class="section-divider">
         <div class="divider-line"></div>
@@ -3391,6 +3815,45 @@
           </tbody>
         </table>
       </section>
+      <div class="compare-tray" id="compareTray" hidden>
+        <span class="compare-summary" id="compareSummary" aria-live="polite"
+          >0 of 3 patterns selected</span
+        >
+        <button class="compare-action" id="clearCompare" type="button">
+          Clear
+        </button>
+        <button
+          class="compare-action primary"
+          id="openCompare"
+          type="button"
+          disabled
+        >
+          Compare
+        </button>
+      </div>
+      <dialog
+        class="compare-dialog"
+        id="compareDialog"
+        aria-labelledby="compareDialogTitle"
+      >
+        <div class="compare-dialog-inner">
+          <div class="compare-dialog-header">
+            <h2 class="compare-dialog-title" id="compareDialogTitle">
+              Pattern comparison
+            </h2>
+            <button
+              class="compare-close"
+              id="closeCompare"
+              type="button"
+              aria-label="Close comparison"
+            >
+              &times;
+            </button>
+          </div>
+          <div class="compare-grid" id="compareGrid"></div>
+        </div>
+      </dialog>
+      </main>
       <footer>
         <div class="footer-left">
           <div class="footer-title">UI Aesthetic Atlas</div>
@@ -3403,19 +3866,19 @@
         </div>
         <div class="footer-links">
           <a
-            href="https://github.com/Achal13jain/ui-design-patterns"
+            href="https://github.com/Achal13jain/design-patterns"
             target="_blank"
             rel="noopener noreferrer"
             >GitHub Repository &rarr;</a
           >
           <a
-            href="https://github.com/Achal13jain/ui-design-patterns/blob/main/CONTRIBUTING.md"
+            href="https://github.com/Achal13jain/design-patterns/blob/master/CONTRIBUTING.md"
             target="_blank"
             rel="noopener noreferrer"
             >Contribute &rarr;</a
           >
           <a
-            href="https://achal-jain-portfolio.netlify.app"
+            href="https://achal-jain.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
             >Portfolio &rarr;</a
@@ -3470,48 +3933,330 @@
       );
       var filterBtns = document.querySelectorAll(".filter-btn");
       var patternEntries = document.querySelectorAll(".pattern-entry");
+      var gallery = document.getElementById("gallery-entries");
+      var gallerySection = document.getElementById("gallery");
+      var searchInput = document.getElementById("patternSearch");
+      var viewBtns = document.querySelectorAll(".view-btn");
+      var filterCountEl = document.getElementById("filterCount");
+      var noResults = document.getElementById("noResults");
+      var compareTray = document.getElementById("compareTray");
+      var compareSummary = document.getElementById("compareSummary");
+      var clearCompare = document.getElementById("clearCompare");
+      var openCompare = document.getElementById("openCompare");
+      var compareDialog = document.getElementById("compareDialog");
+      var closeCompare = document.getElementById("closeCompare");
+      var compareGrid = document.getElementById("compareGrid");
       var effortLevels = ["low", "medium", "high"];
       var categoryMap = {
         saas: ["saas"],
         creative: ["creative"],
         gaming: ["gaming", "web3"],
       };
+      var validFilters = ["all", "low", "medium", "high", "saas", "creative", "gaming"];
+      var activeFilter = "all";
+      var activeView = "cinematic";
+      var selectedSlugs = [];
+
+      function getPatternSlug(entry) {
+        var source = entry.querySelector("video").getAttribute("src") || "";
+        var filename = source.split("/").pop() || "";
+        return filename.replace(/\.mp4$/, "").replace(/^\d+-/, "");
+      }
+
+      patternEntries.forEach(function (entry) {
+        var slug = getPatternSlug(entry);
+        entry.id = "pattern-" + slug;
+        entry.dataset.search =
+          (entry.textContent + " " + slug + " " + slug.replace(/-/g, " "))
+            .toLowerCase()
+            .replace(/\s+/g, " ");
+
+        var actions = document.createElement("div");
+        actions.className = "pattern-actions";
+
+        var compareButton = document.createElement("button");
+        compareButton.type = "button";
+        compareButton.className = "compare-toggle";
+        compareButton.dataset.slug = slug;
+        compareButton.textContent = "+ Compare";
+        compareButton.setAttribute("aria-pressed", "false");
+        compareButton.addEventListener("click", function () {
+          toggleComparison(slug);
+        });
+
+        var openButton = document.createElement("button");
+        openButton.type = "button";
+        openButton.className = "overview-open";
+        openButton.textContent = "Explore pattern →";
+        openButton.addEventListener("click", function () {
+          setView("cinematic", true);
+          setPatternHash(entry);
+          entry.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+        actions.append(compareButton, openButton);
+        entry.querySelector(".pattern-info").appendChild(actions);
+      });
+
       function reobserve() {
         patternEntries.forEach(function (e) {
           if (
-            !e.classList.contains("hidden") &&
+            !e.hidden &&
             !e.classList.contains("in-view")
           )
             revealObs.observe(e);
         });
       }
+
+      function matchesActiveFilter(entry) {
+        if (activeFilter === "all") return true;
+        if (effortLevels.indexOf(activeFilter) !== -1)
+          return entry.dataset.effort === activeFilter;
+        var tagList = (entry.dataset.tags || "").split(/\s+/);
+        var categories = categoryMap[activeFilter] || [];
+        return categories.some(function (category) {
+          return tagList.indexOf(category) !== -1;
+        });
+      }
+
+      function updateUrlState() {
+        var url = new URL(window.location.href);
+        var query = searchInput.value.trim();
+        if (activeFilter === "all") url.searchParams.delete("filter");
+        else url.searchParams.set("filter", activeFilter);
+        if (query) url.searchParams.set("q", query);
+        else url.searchParams.delete("q");
+        if (activeView === "overview") url.searchParams.set("view", "overview");
+        else url.searchParams.delete("view");
+        if (selectedSlugs.length)
+          url.searchParams.set("compare", selectedSlugs.join(","));
+        else url.searchParams.delete("compare");
+        window.history.replaceState(null, "", url);
+      }
+
+      function setPatternHash(entry) {
+        var url = new URL(window.location.href);
+        url.hash = entry.id;
+        window.history.replaceState(null, "", url);
+      }
+
+      function updateCompareUi(updateUrl) {
+        document.querySelectorAll(".compare-toggle").forEach(function (button) {
+          var selected = selectedSlugs.indexOf(button.dataset.slug) !== -1;
+          button.classList.toggle("active", selected);
+          button.setAttribute("aria-pressed", String(selected));
+          button.textContent = selected ? "✓ Selected" : "+ Compare";
+          button.disabled = selectedSlugs.length >= 3 && !selected;
+        });
+        compareTray.hidden = selectedSlugs.length === 0;
+        compareSummary.textContent =
+          selectedSlugs.length + " of 3 patterns selected";
+        openCompare.disabled = selectedSlugs.length < 2;
+        if (updateUrl) updateUrlState();
+      }
+
+      function toggleComparison(slug) {
+        var index = selectedSlugs.indexOf(slug);
+        if (index !== -1) selectedSlugs.splice(index, 1);
+        else if (selectedSlugs.length < 3) selectedSlugs.push(slug);
+        updateCompareUi(true);
+      }
+
+      function getPatternName(entry) {
+        return entry
+          .querySelector(".pattern-name")
+          .textContent.trim()
+          .replace(/-\s*/g, "");
+      }
+
+      function getMetaValue(entry, label) {
+        var value = "";
+        entry.querySelectorAll(".meta-row").forEach(function (row) {
+          var rowLabel = row.querySelector(".meta-label");
+          if (
+            rowLabel &&
+            rowLabel.textContent.trim().toLowerCase() === label.toLowerCase()
+          ) {
+            value = row.querySelector(".meta-value").textContent.trim();
+          }
+        });
+        return value;
+      }
+
+      function appendCompareField(list, label, value) {
+        var field = document.createElement("div");
+        field.className = "compare-field";
+        var term = document.createElement("dt");
+        term.textContent = label;
+        var description = document.createElement("dd");
+        description.textContent = value;
+        field.append(term, description);
+        list.appendChild(field);
+      }
+
+      function buildComparison() {
+        compareGrid.replaceChildren();
+        selectedSlugs.forEach(function (slug) {
+          var entry = document.getElementById("pattern-" + slug);
+          if (!entry) return;
+          var card = document.createElement("article");
+          card.className = "compare-card";
+          var number = document.createElement("div");
+          number.className = "compare-card-number";
+          number.textContent = entry.dataset.num + " / 20";
+          var title = document.createElement("h3");
+          title.textContent = getPatternName(entry);
+          var tagline = document.createElement("p");
+          tagline.className = "compare-card-tagline";
+          tagline.textContent = entry.querySelector(".pattern-tagline").textContent.trim();
+          var details = document.createElement("dl");
+          appendCompareField(details, "Best for", getMetaValue(entry, "Best for"));
+          appendCompareField(details, "Effort", getMetaValue(entry, "Effort"));
+          appendCompareField(details, "Skip if", getMetaValue(entry, "Skip if"));
+          appendCompareField(
+            details,
+            "Signals",
+            Array.from(entry.querySelectorAll(".tag"))
+              .map(function (tag) {
+                return tag.textContent.trim();
+              })
+              .join(" · "),
+          );
+          card.append(number, title, tagline, details);
+          compareGrid.appendChild(card);
+        });
+      }
+
+      function applyGalleryState(updateUrl) {
+        var query = searchInput.value.trim().toLowerCase();
+        var visible = 0;
+        patternEntries.forEach(function (entry) {
+          var show =
+            matchesActiveFilter(entry) &&
+            (!query || entry.dataset.search.indexOf(query) !== -1);
+          entry.classList.toggle("hidden", !show);
+          entry.hidden = !show;
+          if (show) {
+            visible++;
+            entry.removeAttribute("aria-hidden");
+          } else {
+            entry.setAttribute("aria-hidden", "true");
+            var video = entry.querySelector("video");
+            if (video) video.pause();
+          }
+        });
+        filterCountEl.textContent =
+          visible === patternEntries.length
+            ? patternEntries.length + " patterns"
+            : "Showing " + visible + " of " + patternEntries.length;
+        noResults.hidden = visible !== 0;
+        if (updateUrl) updateUrlState();
+        requestAnimationFrame(reobserve);
+      }
+
+      function setView(view, updateUrl) {
+        activeView = view === "overview" ? "overview" : "cinematic";
+        gallery.classList.toggle("overview", activeView === "overview");
+        viewBtns.forEach(function (button) {
+          var active = button.dataset.view === activeView;
+          button.classList.toggle("active", active);
+          button.setAttribute("aria-pressed", String(active));
+        });
+        if (updateUrl) updateUrlState();
+      }
+
       filterBtns.forEach(function (btn) {
         btn.addEventListener("click", function () {
+          activeFilter = btn.dataset.filter;
           filterBtns.forEach(function (b) {
             b.classList.remove("active");
             b.setAttribute("aria-pressed", "false");
           });
           btn.classList.add("active");
           btn.setAttribute("aria-pressed", "true");
-          var f = btn.dataset.filter;
-          patternEntries.forEach(function (entry) {
-            if (f === "all") {
-              entry.classList.remove("hidden");
-              return;
-            }
-            var effort = entry.dataset.effort;
-            var tagList = (entry.dataset.tags || "").split(/\s+/);
-            var show = false;
-            if (effortLevels.indexOf(f) !== -1 && effort === f) show = true;
-            if (categoryMap[f])
-              categoryMap[f].forEach(function (cat) {
-                if (tagList.indexOf(cat) !== -1) show = true;
-              });
-            entry.classList.toggle("hidden", !show);
-          });
-          requestAnimationFrame(reobserve);
+          applyGalleryState(true);
+          gallerySection.scrollIntoView({ behavior: "smooth", block: "start" });
         });
       });
+
+      searchInput.addEventListener("input", function () {
+        applyGalleryState(true);
+      });
+
+      viewBtns.forEach(function (button) {
+        button.addEventListener("click", function () {
+          setView(button.dataset.view, true);
+        });
+      });
+
+      clearCompare.addEventListener("click", function () {
+        selectedSlugs = [];
+        updateCompareUi(true);
+      });
+
+      openCompare.addEventListener("click", function () {
+        if (selectedSlugs.length < 2) return;
+        buildComparison();
+        if (typeof compareDialog.showModal === "function") {
+          if (!compareDialog.open) compareDialog.showModal();
+        } else {
+          compareDialog.setAttribute("open", "");
+        }
+      });
+
+      function closeComparisonDialog() {
+        if (typeof compareDialog.close === "function" && compareDialog.open)
+          compareDialog.close();
+        else compareDialog.removeAttribute("open");
+      }
+
+      closeCompare.addEventListener("click", closeComparisonDialog);
+      compareDialog.addEventListener("click", function (event) {
+        if (event.target === compareDialog) closeComparisonDialog();
+      });
+
+      var initialParams = new URLSearchParams(window.location.search);
+      var requestedFilter = initialParams.get("filter") || "all";
+      activeFilter =
+        validFilters.indexOf(requestedFilter) !== -1 ? requestedFilter : "all";
+      searchInput.value = initialParams.get("q") || "";
+      selectedSlugs = (initialParams.get("compare") || "")
+        .split(",")
+        .filter(function (slug, index, slugs) {
+          return (
+            slug &&
+            slugs.indexOf(slug) === index &&
+            document.getElementById("pattern-" + slug)
+          );
+        })
+        .slice(0, 3);
+      filterBtns.forEach(function (button) {
+        var active = button.dataset.filter === activeFilter;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+      setView(initialParams.get("view"), false);
+      applyGalleryState(false);
+      updateCompareUi(false);
+
+      if (window.location.hash) {
+        var linkedPattern = document.getElementById(
+          window.location.hash.slice(1),
+        );
+        if (linkedPattern && linkedPattern.classList.contains("pattern-entry")) {
+          activeFilter = "all";
+          searchInput.value = "";
+          filterBtns.forEach(function (button) {
+            var active = button.dataset.filter === "all";
+            button.classList.toggle("active", active);
+            button.setAttribute("aria-pressed", String(active));
+          });
+          applyGalleryState(false);
+          updateUrlState();
+          requestAnimationFrame(function () {
+            linkedPattern.scrollIntoView({ block: "center" });
+          });
+        }
+      }
       document.querySelectorAll(".pattern-entry").forEach(function (entry) {
         [
           entry.querySelector(".pattern-preview"),
@@ -3567,20 +4312,27 @@
         );
         updateParallax();
       })();
+      var reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
       var vidObs = new IntersectionObserver(
         function (entries) {
-          entries.forEach(function (e) {
-            if (e.isIntersecting) {
-              e.target.play().catch(function () {});
-              vidObs.unobserve(e.target);
+          entries.forEach(function (entry) {
+            var video = entry.target;
+            if (entry.isIntersecting && !video.closest("[hidden]")) {
+              video.preload = "auto";
+              if (video.readyState === 0) video.load();
+              video.play().catch(function () {});
+            } else {
+              video.pause();
             }
           });
         },
-        { rootMargin: "200px" },
+        { rootMargin: "600px 0px", threshold: 0.01 },
       );
-      document.querySelectorAll(".pattern-preview video").forEach(function (v) {
-        v.preload = "none";
-        vidObs.observe(v);
+      document.querySelectorAll(".pattern-preview video").forEach(function (video) {
+        video.controls = false;
+        vidObs.observe(video);
       });
       var navToggle = document.getElementById("navToggle"),
         mainNav = document.getElementById("mainNav"),
@@ -3610,24 +4362,6 @@
         if (e.key === "Escape" && mainNav.classList.contains("open"))
           closeNav();
       });
-      var cursor = document.getElementById("cursor");
-      if (window.matchMedia("(hover:hover) and (pointer:fine)").matches) {
-        document.body.classList.add("custom-cursor");
-        document.addEventListener("mousemove", function (e) {
-          cursor.style.left = e.clientX + "px";
-          cursor.style.top = e.clientY + "px";
-        });
-        document
-          .querySelectorAll("a,button,.pattern-entry")
-          .forEach(function (el) {
-            el.addEventListener("mouseenter", function () {
-              cursor.classList.add("active");
-            });
-            el.addEventListener("mouseleave", function () {
-              cursor.classList.remove("active");
-            });
-          });
-      }
       var btt = document.getElementById("backToTop");
       window.addEventListener("scroll", function () {
         btt.classList.toggle("visible", window.scrollY > 600);
@@ -3636,28 +4370,33 @@
         window.scrollTo({ top: 0, behavior: "smooth" });
       });
       window.addEventListener("load", function () {
-        var loader = document.getElementById("loader");
-        setTimeout(function () {
-          loader.classList.add("done");
-          document.body.classList.add("loaded");
-          setTimeout(function () {
-            var stats = document.querySelectorAll(".stat-num");
-            if (stats[0]) animateCounter(stats[0], 20, "", 1800);
-            if (stats[1]) animateCounter(stats[1], 5, "s", 1200);
-            if (stats[2])
-              setTimeout(function () {
-                stats[2].textContent = "0";
-                stats[2].style.display = "inline-block";
-                stats[2].style.animation = "accentFlash 0.4s ease";
-              }, 800);
-          }, 1400);
-        }, 1600);
+        var stats = document.querySelectorAll(".stat-num");
+        if (reduceMotion) {
+          if (stats[0]) stats[0].textContent = "20";
+          if (stats[1]) stats[1].textContent = "10s";
+        } else {
+          if (stats[0]) animateCounter(stats[0], 20, "", 1200);
+          if (stats[1]) animateCounter(stats[1], 10, "s", 900);
+        }
+        if (stats[2]) stats[2].textContent = "0";
       });
       // -- MATRIX ROW CLICK → SCROLL TO ENTRY ---------------
       document
         .querySelectorAll(".matrix-table tbody tr")
         .forEach(function (row) {
-          row.addEventListener("click", function () {
+          var patternName = row.querySelector(".matrix-name");
+          if (patternName) {
+            var matrixButton = document.createElement("button");
+            matrixButton.type = "button";
+            matrixButton.className = "matrix-link";
+            matrixButton.textContent = patternName.textContent.trim();
+            matrixButton.setAttribute(
+              "aria-label",
+              "View " + patternName.textContent.trim(),
+            );
+            patternName.replaceChildren(matrixButton);
+          }
+          function activateRow() {
             var num = row.querySelector(".matrix-num");
             if (!num) return;
             var n = num.textContent.trim();
@@ -3665,36 +4404,26 @@
               '.pattern-entry[data-num="' + n + '"]',
             );
             if (entry) {
-              entry.classList.remove("hidden");
+              activeFilter = "all";
+              searchInput.value = "";
+              filterBtns.forEach(function (button) {
+                var active = button.dataset.filter === "all";
+                button.classList.toggle("active", active);
+                button.setAttribute("aria-pressed", String(active));
+              });
+              setView("cinematic", false);
+              applyGalleryState(false);
+              updateUrlState();
+              setPatternHash(entry);
               entry.scrollIntoView({ behavior: "smooth", block: "center" });
               entry.style.boxShadow = "inset 0 0 0 2px var(--accent)";
               setTimeout(function () {
                 entry.style.boxShadow = "";
               }, 2000);
             }
-          });
+          }
+          row.addEventListener("click", activateRow);
         });
-
-      // -- FILTER COUNT UPDATER -----------------------------
-      var filterCountEl = document.getElementById("filterCount");
-      function updateFilterCount() {
-        var total = patternEntries.length;
-        var visible = 0;
-        patternEntries.forEach(function (e) {
-          if (!e.classList.contains("hidden")) visible++;
-        });
-        if (visible === total) {
-          filterCountEl.textContent = "";
-        } else {
-          filterCountEl.textContent = "Showing " + visible + " of " + total;
-        }
-      }
-      // Patch filter click to also update count
-      filterBtns.forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          setTimeout(updateFilterCount, 50);
-        });
-      });
 
       setTimeout(function () {
         document.querySelectorAll(".char-reveal").forEach(function (el) {
